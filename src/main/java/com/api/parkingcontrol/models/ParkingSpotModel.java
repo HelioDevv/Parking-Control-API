@@ -155,6 +155,4 @@ public class ParkingSpotModel implements Serializable{
 		ParkingSpotModel other = (ParkingSpotModel) obj;
 		return Objects.equals(id, other.id);
 	}
-	
-	
 }
