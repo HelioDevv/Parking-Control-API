@@ -2,7 +2,6 @@ package com.api.parkingcontrol.models;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Objects;
 import java.util.UUID;
 
 import org.springframework.data.annotation.Id;
@@ -18,7 +17,7 @@ import jakarta.persistence.Table;
 public class ParkingSpotModel implements Serializable{
 	private static final long serialVersionUID = 1L;
 
-	@Id
+	@jakarta.persistence.Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private UUID id;
 	@Column(nullable = false, unique = true, length = 10)
@@ -39,25 +38,6 @@ public class ParkingSpotModel implements Serializable{
 	private String apartment;
 	@Column(nullable = false, length = 30)
 	private String block;
-	
-	public ParkingSpotModel() {
-		super();
-	}
-
-	public ParkingSpotModel(UUID id, String parkingSpotNumber, String licensePlateCar, String brandCar, String modelCar,
-			String colorCar, LocalDateTime registrationDate, String responsibleName, String apartment, String block) {
-		super();
-		this.id = id;
-		this.parkingSpotNumber = parkingSpotNumber;
-		this.licensePlateCar = licensePlateCar;
-		this.brandCar = brandCar;
-		this.modelCar = modelCar;
-		this.colorCar = colorCar;
-		this.registrationDate = registrationDate;
-		this.responsibleName = responsibleName;
-		this.apartment = apartment;
-		this.block = block;
-	}
 
 	public UUID getId() {
 		return id;
@@ -137,22 +117,5 @@ public class ParkingSpotModel implements Serializable{
 
 	public void setBlock(String block) {
 		this.block = block;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ParkingSpotModel other = (ParkingSpotModel) obj;
-		return Objects.equals(id, other.id);
 	}
 }
